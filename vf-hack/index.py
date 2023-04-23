@@ -6,6 +6,9 @@ incomes = [
     { 'description': 'salary', 'amount': 5000 }
 ]
 
+@app.route('/')
+def hello():
+    return "hello, world"
 
 @app.route('/incomes')
 def get_incomes():

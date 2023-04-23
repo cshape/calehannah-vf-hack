@@ -1,1 +1,1 @@
-web: sh bootstrap.sh
+web: gunicorn wsgi:app

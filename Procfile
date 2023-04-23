@@ -1,1 +1,1 @@
-release sh bootstrap.sh
+web: sh bootstrap.sh

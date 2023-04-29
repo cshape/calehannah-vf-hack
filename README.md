@@ -7,11 +7,26 @@
 
 TODOS:
 
-- [ ] Build Basic Bot flow in Voiceflow hard coded responses
+- [ ] Build Basic Bot flow in Voiceflow to facilitate convo
 - [ ] Figure out user experience/bot functionality long term
 - [ ] Figure out user experience/bot functionality to build today
 - [ ] Connect to Voiceflow via API
 - [ ] Connect to OpenAI via API
 - [ ] Figure out good prompts and prompt chaining setup
 - [ ] Connect to Google
+- [ ] Use GPT-2 token counting API to have more graceful prompt/response limits
 - [ ] Connect to DB
+- [ ] Build logic for searching DB vs Google for longer-term planning
+
+*Long Term*
+
+- Communicate thru email over months planning the wedding. Sends emails either a daily digest or maybe whenever vendors write back
+- Can handle many aspects of organizing the wedding, from comms, to finances, to whatever
+
+*Todays Demo*
+
+- Collects important info to construct persona for the wedding couple
+- Collects info on venue needs/wants/restrictions
+- Searches for good venues matching those things
+- Offers to contact the venues and set up a booking or viewing
+- Emails the venues to start a convo with them, CCing the couple

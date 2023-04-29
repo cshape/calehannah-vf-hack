@@ -5,6 +5,10 @@
 - Integrations with Google Sheets, Pinterest, Email
 - Communicates through Email as POC (but ideally through many channels)
 
+*To Run the App*
+
+
+
 TODOS:
 
 - [ ] Build Basic Bot flow in Voiceflow to facilitate convo

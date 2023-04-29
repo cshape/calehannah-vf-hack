@@ -16,15 +16,15 @@ def test():
 
 @app.route("/search")
 def search():
-        # takes some text as a param then searches google. returns google response
+        # takes some text as a param then searches google. returns google response as JSON
         pass
 
 @app.route("/openai")
 def openai():
-        # takes some text as a param then sends to gpt-3. returns gpt-3 response
+        # takes some text as a param then sends to gpt-3. returns gpt-3 response as JSON
         pass
 
 @app.route("/voiceflow")
 def voiceflow():
-        # takes some text as a param then sends a request to voiceflow. returns voiceflow response
+        # takes some text as a param then sends a request to voiceflow. returns voiceflow response as JSON
         pass

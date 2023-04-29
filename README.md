@@ -7,11 +7,11 @@
 
 TODOS:
 
-[] Build Basic Bot flow in Voiceflow hard coded responses
-[] Figure out user experience/bot functionality long term
-[] Figure out user experience/bot functionality to build today
-[] Connect to Voiceflow via API
-[] Connect to OpenAI via API
-[] Figure out good prompts and prompt chaining setup
-[] Connect to Google
-[] Connect to DB
+- [ ] Build Basic Bot flow in Voiceflow hard coded responses
+- [ ] Figure out user experience/bot functionality long term
+- [ ] Figure out user experience/bot functionality to build today
+- [ ] Connect to Voiceflow via API
+- [ ] Connect to OpenAI via API
+- [ ] Figure out good prompts and prompt chaining setup
+- [ ] Connect to Google
+- [ ] Connect to DB

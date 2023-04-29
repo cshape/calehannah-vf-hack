@@ -7,7 +7,9 @@
 
 *To Run the App*
 
-
+1. pip install Flask 
+2. pip install gunicorn
+3. gunicorn wsgi:app
 
 TODOS:
 

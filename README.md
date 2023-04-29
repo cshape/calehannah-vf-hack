@@ -3,7 +3,7 @@
 - An AI wedding planner which saves you time researching and corresponding with vendors. 
 - A delightful, useful conversational experience 
 - Integrations with Google Sheets, Pinterest, Email
-- Communicates through Email as POC (but ideally through many channels)
+- Communicates through Website Chat as POC (but ideally through many channels)
 
 *To Run the App*
 
@@ -14,15 +14,17 @@
 TODOS:
 
 - [ ] Build Basic Bot flow in Voiceflow to facilitate convo
-- [ ] Figure out user experience/bot functionality long term
-- [ ] Figure out user experience/bot functionality to build today
+- [x] Figure out user experience/bot functionality long term
+- [x] Figure out user experience/bot functionality to build today
 - [ ] Connect to Voiceflow via API
 - [ ] Connect to OpenAI via API
 - [ ] Figure out good prompts and prompt chaining setup
 - [ ] Connect to Google
+- [ ] Connect to Email
 - [ ] Use GPT-2 token counting API to have more graceful prompt/response limits
 - [ ] Connect to DB
 - [ ] Build logic for searching DB vs Google for longer-term planning
+- [ ] Plug into image gen or image understanding tools to do cool stuff
 
 *Long Term*
 

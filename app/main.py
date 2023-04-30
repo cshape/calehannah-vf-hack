@@ -3,6 +3,9 @@ from googlesearch import search
 import openai
 import requests
 import json
+import smtplib, ssl
+from email.message import EmailMessage
+import emailsender
 
 app = Flask(__name__)
 
@@ -52,3 +55,7 @@ def openai():
 def voiceflow():
         # takes some text as a param then sends a request to voiceflow. returns voiceflow response as JSON
         pass
+
+@app.route("/email")
+def email():
+        return emailsender.sender()

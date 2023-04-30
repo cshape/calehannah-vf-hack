@@ -8,7 +8,7 @@ database_connection = [] # if long term
 
 @app.route("/")
 def home_view():
-        return "<h1>Hi Hannah!</h1>"
+        return "<h1>Hi hello Hannah!</h1>"
 
 @app.route("/test")
 def test():

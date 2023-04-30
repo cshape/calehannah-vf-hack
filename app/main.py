@@ -20,6 +20,8 @@ def read_secrets() -> dict:
         print(error)
         environment = "prod"
         return {}
+    else:
+        environment = "prod"    
 secrets = read_secrets()
 print(environment)
 

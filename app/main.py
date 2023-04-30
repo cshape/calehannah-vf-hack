@@ -20,6 +20,7 @@ def read_secrets() -> dict:
         environment = "prod"
         return {}
 secrets = read_secrets()
+print(environment)
 
 if environment == "dev":
         auth = f"Bearer {secrets['openai_key']}"

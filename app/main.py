@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from googlesearch import search
 
 app = Flask(__name__)
@@ -15,11 +15,15 @@ def test():
         return jsonify({'name': 'cale',
                     'occupation': 'cool guy'})
 
-@app.route("/search")
-def search():
-        pass
+@app.route("/tosearch")
+def to_search():
+        search_term = request.args.get("term")
+
+        results = []
+        results.extend(search(search_term, advanced="True"))
+
+        return f"{results}"        
         # takes some text as a param then searches google. returns google response as JSON
-        # hi this is cale trying to push
 
 @app.route("/openai")
 def openai():

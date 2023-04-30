@@ -14,11 +14,9 @@
 
 TODOS:
 
-- [ ] Build Basic Bot flow in Voiceflow to facilitate convo
+- [x] Build Basic Bot flow in Voiceflow to facilitate convo
 - [x] Figure out user experience/bot functionality long term
 - [x] Figure out user experience/bot functionality to build today
-- [ ] Connect to Voiceflow via API
-- [ ] Connect to OpenAI via API
 - [ ] Figure out good prompts and prompt chaining setup
 - [ ] Connect to Google
 - [ ] Connect to Email
@@ -26,6 +24,8 @@ TODOS:
 - [ ] Connect to DB
 - [ ] Build logic for searching DB vs Google for longer-term planning
 - [ ] Plug into image gen or image understanding tools to do cool stuff
+- [ ] Connect to Voiceflow via API
+- [ ] Connect to OpenAI via API
 
 *Long Term*
 

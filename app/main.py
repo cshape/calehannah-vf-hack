@@ -4,6 +4,9 @@ import openai
 import requests
 import json
 import os, sys
+import smtplib, ssl
+from email.message import EmailMessage
+
 
 app = Flask(__name__)
 
@@ -28,8 +31,11 @@ print(environment)
 
 if environment == "dev":
         auth = f"Bearer {secrets['openai_key']}"
+        email_auth = secrets['email_key']
 else:
         auth = f"Bearer {os.getenv('openai_key')}"
+        email_auth = os.getenv('email_key')
+
 
 @app.route("/")
 def home_view():
@@ -78,3 +84,26 @@ def openai():
 def voiceflow():
         # takes some text as a param then sends a request to voiceflow. returns voiceflow response as JSON
         pass
+
+@app.route("/email")
+def email():
+        email = EmailMessage()
+        print(email_auth)
+
+        email["from"] = "Mary Maker"
+        email["to"] = "caleandhannah@gmail.com"
+        email["subject"] = "T-t-test 2!"
+
+        email.set_content("You can send this!")
+
+        try:
+                with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
+                        smtp.ehlo()
+                        smtp.starttls()
+                        smtp.login("marymakerapp@gmail.com", email_auth)
+                        smtp.send_message(email)
+                        print("It's been sent!")
+                        return "Email sent"
+        except:
+                return "Status of send unclear"
+

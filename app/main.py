@@ -51,11 +51,16 @@ def to_search():
         search_term = request.args.get("term")
 
         results = []
-        results.extend(search(search_term, advanced="True"))
-
-        return {
+        try:
+                results.extend(search(search_term, advanced="True"))
+                return {
                 'results': f'{results}'
-        }      
+                }  
+        except:
+                return {
+                'results': "I was having some trouble searching the internet right now. Maybe you could let me know if you have specific venues, vendors or ideas you're thinking about in the meantime."
+                }    
+        
         # takes some text as a param then searches google. returns google response as JSON
 
 @app.route("/openaisearch")

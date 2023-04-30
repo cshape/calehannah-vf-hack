@@ -16,7 +16,8 @@ def read_secrets() -> dict:
     try:
         with open(filename, mode='r') as f:
             return json.loads(f.read())
-    except FileNotFoundError:
+    except (FileNotFoundError, KeyError) as error:
+        print(error)
         environment = "prod"
         return {}
 secrets = read_secrets()

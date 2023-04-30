@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 prompt_elements = []
 database_connection = [] # if long term
+environment = "dev"
 
 def read_secrets() -> dict:
     filename = os.path.join('secrets.json')
@@ -16,8 +17,14 @@ def read_secrets() -> dict:
         with open(filename, mode='r') as f:
             return json.loads(f.read())
     except FileNotFoundError:
+        environment = "prod"
         return {}
 secrets = read_secrets()
+
+if environment == "dev":
+        auth = f"Bearer {secrets['openai_key']}"
+else:
+        auth = f"Bearer {os.getenv('openai_key')}"
 
 @app.route("/")
 def home_view():
@@ -48,7 +55,6 @@ def openai():
              "temperature": 0.7,
              "max_tokens": 512
            }
-        auth = f"Bearer {secrets['openai_key']}"
         print(auth)
         openairesponse = requests.post("https://api.openai.com/v1/completions", 
                 headers={"Content-Type": "application/json", "Authorization": auth},

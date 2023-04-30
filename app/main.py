@@ -66,7 +66,7 @@ def openai():
              "model": "text-davinci-003",
              "prompt": prompt,
              "temperature": 0.7,
-             "max_tokens": 512
+             "max_tokens": 1024
            }
         print(auth)
         openairesponse = requests.post("https://api.openai.com/v1/completions", 

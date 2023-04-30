@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
- 
+from googlesearch import search
+
 app = Flask(__name__)
 
 prompt_elements = []
 database_connection = [] # if long term
- 
+
 @app.route("/")
 def home_view():
         return "<h1>Hi Hannah!</h1>"
@@ -16,8 +17,9 @@ def test():
 
 @app.route("/search")
 def search():
-        # takes some text as a param then searches google. returns google response as JSON
         pass
+        # takes some text as a param then searches google. returns google response as JSON
+        # hi this is cale trying to push
 
 @app.route("/openai")
 def openai():

@@ -65,7 +65,10 @@ def openai():
                 headers={"Content-Type": "application/json", "Authorization": auth},
                 json = config)
         jsonresponse = openairesponse.json()
-        return jsonresponse["choices"][0]["text"]
+        formattedresponse = {
+                'searchterm': jsonresponse["choices"][0]["text"]
+        }
+        return formattedresponse
         # takes some text as a param then sends to gpt-3. returns gpt-3 response as JSON
         pass
 

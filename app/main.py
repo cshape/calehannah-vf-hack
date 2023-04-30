@@ -1,5 +1,8 @@
 from flask import Flask, jsonify, request
 from googlesearch import search
+import openai
+import requests
+import json
 
 app = Flask(__name__)
 
@@ -25,8 +28,23 @@ def to_search():
         return f"{results}"        
         # takes some text as a param then searches google. returns google response as JSON
 
-@app.route("/openai")
+@app.route("/openaisearch")
 def openai():
+        text = request.args.get("text")
+        prompt = text + "\nEND OF TEXT.\n From the above text, think of a google search string you would use to learn more relevant information.\nGoogle Search Term:"
+        print(prompt)
+        openai.api_key = "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"
+        config = {
+             "model": "text-davinci-003",
+             "prompt": prompt,
+             "temperature": 0.7,
+             "max_tokens": 512
+           }
+        openairesponse = requests.post("https://api.openai.com/v1/completions", 
+                headers={"Content-Type": "application/json", "Authorization": "Bearer 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"},
+                json = config)
+        jsonresponse = openairesponse.json()
+        return jsonresponse["choices"][0]["text"]
         # takes some text as a param then sends to gpt-3. returns gpt-3 response as JSON
         pass
 

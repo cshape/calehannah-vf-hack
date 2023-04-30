@@ -3,11 +3,21 @@ from googlesearch import search
 import openai
 import requests
 import json
+import os, sys
 
 app = Flask(__name__)
 
 prompt_elements = []
 database_connection = [] # if long term
+
+def read_secrets() -> dict:
+    filename = os.path.join('secrets.json')
+    try:
+        with open(filename, mode='r') as f:
+            return json.loads(f.read())
+    except FileNotFoundError:
+        return {}
+secrets = read_secrets()
 
 @app.route("/")
 def home_view():
@@ -32,16 +42,16 @@ def to_search():
 def openai():
         text = request.args.get("text")
         prompt = text + "\nEND OF TEXT.\n From the above text, think of a google search string you would use to learn more relevant information.\nGoogle Search Term:"
-        print(prompt)
-        openai.api_key = ""
         config = {
              "model": "text-davinci-003",
              "prompt": prompt,
              "temperature": 0.7,
              "max_tokens": 512
            }
+        auth = f"Bearer {secrets['openai_key']}"
+        print(auth)
         openairesponse = requests.post("https://api.openai.com/v1/completions", 
-                headers={"Content-Type": "application/json", "Authorization": "Bearer "},
+                headers={"Content-Type": "application/json", "Authorization": auth},
                 json = config)
         jsonresponse = openairesponse.json()
         return jsonresponse["choices"][0]["text"]

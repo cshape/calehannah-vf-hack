@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 gunicorn = "*"
+googlesearch-python = "*"
+openai = "*"
 
 [dev-packages]
 

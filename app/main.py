@@ -33,7 +33,7 @@ def openai():
         text = request.args.get("text")
         prompt = text + "\nEND OF TEXT.\n From the above text, think of a google search string you would use to learn more relevant information.\nGoogle Search Term:"
         print(prompt)
-        openai.api_key = "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"
+        openai.api_key = ""
         config = {
              "model": "text-davinci-003",
              "prompt": prompt,
@@ -41,7 +41,7 @@ def openai():
              "max_tokens": 512
            }
         openairesponse = requests.post("https://api.openai.com/v1/completions", 
-                headers={"Content-Type": "application/json", "Authorization": "Bearer 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"},
+                headers={"Content-Type": "application/json", "Authorization": "Bearer "},
                 json = config)
         jsonresponse = openairesponse.json()
         return jsonresponse["choices"][0]["text"]

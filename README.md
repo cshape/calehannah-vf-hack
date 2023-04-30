@@ -7,25 +7,27 @@
 
 *To Run the App*
 
-1. `pip install Flask`
-2. `pip install gunicorn`
-3. `pip install googlesearch-python`
-4. `gunicorn wsgi:app`
+1. `pip install pipenv`
+2. `pipenv install Flask`
+3. `pipenv install gunicorn`
+4. `pipenv install googlesearch-python`
+5. `pipenv shell`
+5. `gunicorn wsgi:app`
 
 TODOS:
 
 - [x] Build Basic Bot flow in Voiceflow to facilitate convo
 - [x] Figure out user experience/bot functionality long term
 - [x] Figure out user experience/bot functionality to build today
-- [ ] Figure out good prompts and prompt chaining setup
-- [ ] Connect to Google
+- [x] Figure out good prompts and prompt chaining setup
+- [x] Connect to Google
 - [ ] Connect to Email
 - [ ] Use GPT-2 token counting API to have more graceful prompt/response limits
 - [ ] Connect to DB
 - [ ] Build logic for searching DB vs Google for longer-term planning
 - [ ] Plug into image gen or image understanding tools to do cool stuff
 - [ ] Connect to Voiceflow via API
-- [ ] Connect to OpenAI via API
+- [x] Connect to OpenAI via API
 
 *Long Term*
 

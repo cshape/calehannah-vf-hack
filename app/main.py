@@ -19,6 +19,7 @@ def test():
 def search():
         pass
         # takes some text as a param then searches google. returns google response as JSON
+        # hi this is cale trying to push
 
 @app.route("/openai")
 def openai():

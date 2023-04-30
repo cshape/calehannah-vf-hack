@@ -7,10 +7,12 @@
 
 *To Run the App*
 
-1. `pip install Flask`
-2. `pip install gunicorn`
-3. `pip install googlesearch-python`
-4. `gunicorn wsgi:app`
+1. `pip install pipenv`
+2. `pipenv install Flask`
+3. `pipenv install gunicorn`
+4. `pipenv install googlesearch-python`
+5. `pipenv shell`
+5. `gunicorn wsgi:app`
 
 TODOS:
 

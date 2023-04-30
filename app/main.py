@@ -16,13 +16,14 @@ def read_secrets() -> dict:
     try:
         with open(filename, mode='r') as f:
             return json.loads(f.read())
-    except (FileNotFoundError, KeyError) as error:
+    except (FileNotFoundError) as error:
         print(error)
         environment = "prod"
-        return {}
     else:
-        environment = "prod"    
+        environment = "prod"   
+        return {} 
 secrets = read_secrets()
+print(secrets)
 print(environment)
 
 if environment == "dev":

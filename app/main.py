@@ -7,6 +7,7 @@ import os, sys
 import smtplib, ssl
 from email.message import EmailMessage
 
+
 app = Flask(__name__)
 
 prompt_elements = []

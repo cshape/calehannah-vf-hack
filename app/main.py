@@ -47,7 +47,9 @@ def to_search():
         results = []
         results.extend(search(search_term, advanced="True"))
 
-        return f"{results}"        
+        return {
+                'results': f'{results}'
+        }      
         # takes some text as a param then searches google. returns google response as JSON
 
 @app.route("/openaisearch")

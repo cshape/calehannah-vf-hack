@@ -55,7 +55,7 @@ def to_search():
 @app.route("/openaisearch")
 def openai():
         text = request.args.get("text")
-        prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple three or four word string you would use to find some relevant information on wedding venues using Google. Make sure to include the location\n Search Term:"
+        prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple five or six word string you would use to find some relevant information on wedding venues using Google. Make sure to include the location\n Search Term:"
         config = {
              "model": "text-davinci-003",
              "prompt": prompt,

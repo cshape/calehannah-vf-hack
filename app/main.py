@@ -9,19 +9,19 @@ app = Flask(__name__)
 
 prompt_elements = []
 database_connection = [] # if long term
-environment = "dev"
 
 def read_secrets() -> dict:
     filename = os.path.join('secrets.json')
     try:
         with open(filename, mode='r') as f:
+            global environment
+            environment = "dev"
             return json.loads(f.read())
     except (FileNotFoundError) as error:
         print(error)
         environment = "prod"
     else:
         environment = "prod"   
-        return {} 
 secrets = read_secrets()
 print(secrets)
 print(environment)

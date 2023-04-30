@@ -55,7 +55,7 @@ def to_search():
 @app.route("/openaisearch")
 def openai():
         text = request.args.get("text")
-        prompt = text + "\nEND OF TEXT.\n From the above text, think of a google search string you would use to learn more relevant information for planning a wedding.\nGoogle Search Term:"
+        prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple keyword string you would use to find some relevant information on wedding venues using Google.\n Search Term:"
         config = {
              "model": "text-davinci-003",
              "prompt": prompt,

@@ -8,6 +8,7 @@ flask = "*"
 gunicorn = "*"
 googlesearch-python = "*"
 openai = "*"
+langchain = "*"
 
 [dev-packages]
 

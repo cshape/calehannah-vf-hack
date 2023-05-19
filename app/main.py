@@ -6,6 +6,7 @@ import json
 import os, sys
 import smtplib, ssl
 from email.message import EmailMessage
+from langchain.llms import OpenAI
 
 
 app = Flask(__name__)
@@ -32,6 +33,7 @@ print(environment)
 if environment == "dev":
         auth = f"Bearer {secrets['openai_key']}"
         email_auth = secrets['email_key']
+        os.environ["OPENAI_API_KEY"] = secrets['openai_key']
 else:
         auth = f"Bearer {os.getenv('openai_key')}"
         email_auth = os.getenv('email_key')
@@ -40,6 +42,41 @@ else:
 @app.route("/")
 def home_view():
         return "<h1>Hi hello Hannah!</h1>"
+
+@app.route("/langchainGoog")
+def langchainGoog():
+        try:
+           text = request.args.get("text")
+           prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple five or six word string you would use to find some relevant information on wedding venues using Google. Make sure to include the location\n Search Term:"
+           llm = OpenAI(temperature=0.7)
+           response = llm(prompt)
+           print(response)
+           return response
+        except Exception as e:
+           print(e)
+           return "something went wrong"
+        
+@app.route("/openaisearch")
+def openai():
+        text = request.args.get("text")
+        prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple five or six word string you would use to find some relevant information on wedding venues using Google. Make sure to include the location\n Search Term:"
+        config = {
+             "model": "text-davinci-003",
+             "prompt": prompt,
+             "temperature": 0.7,
+             "max_tokens": 1024
+           }
+        print(auth)
+        openairesponse = requests.post("https://api.openai.com/v1/completions", 
+                headers={"Content-Type": "application/json", "Authorization": auth},
+                json = config)
+        jsonresponse = openairesponse.json()
+        formattedresponse = {
+                'searchterm': jsonresponse["choices"][0]["text"]
+        }
+        return formattedresponse
+        # takes some text as a param then sends to gpt-3. returns gpt-3 response as JSON
+        pass
 
 @app.route("/test")
 def test():
@@ -63,28 +100,6 @@ def to_search():
         
         # takes some text as a param then searches google. returns google response as JSON
 
-@app.route("/openaisearch")
-def openai():
-        text = request.args.get("text")
-        prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple five or six word string you would use to find some relevant information on wedding venues using Google. Make sure to include the location\n Search Term:"
-        config = {
-             "model": "text-davinci-003",
-             "prompt": prompt,
-             "temperature": 0.7,
-             "max_tokens": 1024
-           }
-        print(auth)
-        openairesponse = requests.post("https://api.openai.com/v1/completions", 
-                headers={"Content-Type": "application/json", "Authorization": auth},
-                json = config)
-        jsonresponse = openairesponse.json()
-        formattedresponse = {
-                'searchterm': jsonresponse["choices"][0]["text"]
-        }
-        return formattedresponse
-        # takes some text as a param then sends to gpt-3. returns gpt-3 response as JSON
-        pass
-
 @app.route("/voiceflow")
 def voiceflow():
         # takes some text as a param then sends a request to voiceflow. returns voiceflow response as JSON
@@ -97,7 +112,7 @@ def email():
 
         email["from"] = "Mary Maker"
         email["to"] = "caleandhannah@gmail.com"
-        email["subject"] = "T-t-test 2!"
+        email["subject"] = "T-t-test 221321!"
 
         email.set_content("You can send this!")
 

@@ -46,8 +46,10 @@ def home_view():
 @app.route("/langchainGoog")
 def langchainGoog():
         try:
+           text = request.args.get("text")
+           prompt = text + "\nEND OF TEXT.\n From the above text, think of a simple five or six word string you would use to find some relevant information on wedding venues using Google. Make sure to include the location\n Search Term:"
            llm = OpenAI(temperature=0.7)
-           response = llm("tell me a joke")
+           response = llm(prompt)
            print(response)
            return response
         except Exception as e:
